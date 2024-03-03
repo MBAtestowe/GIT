@@ -11,9 +11,9 @@ public class HomeworkCalculatorTest {
         HomeworkCalcualtor calcualtor = new HomeworkCalcualtor();
 
         System.out.println("Addition= " +calcualtor.addition(number,number2));
-        calcualtor.subtraction(1,2);
-        calcualtor.multiplication(1,2);
-        calcualtor.division(1,2);
-        calcualtor.modulo(1,2);
+        System.out.println("Substracion= " +calcualtor.subtraction(number,number2));
+        System.out.println("Multiplication= " +calcualtor.multiplication(number,number2));
+        System.out.println("Division= " +calcualtor.division(number,number2));
+        System.out.println("Modulo= " +calcualtor.modulo(number,number2));
     }
 }

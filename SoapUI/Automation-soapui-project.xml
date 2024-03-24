@@ -275,7 +275,7 @@
    <soap:Body>
       <typ:addEmployee>
          <!--Optional:-->
-         <typ:name>Alexiss</typ:name>
+         <typ:name>Alexissa123</typ:name>
          <!--Optional:-->
          <typ:id>5555555555</typ:id>
          <!--Optional:-->
@@ -284,14 +284,14 @@
          <typ:age>30</typ:age>
       </typ:addEmployee>
    </soap:Body>
-</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a54c9984-5a04-49c7-bb41-1ef12b1d0bea"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>age</con:name><con:value>30</con:value></con:property><con:property><con:name>name</con:name><con:value>Alexiss</con:value></con:property><con:property><con:name>id</con:name><con:value>5555555555</con:value></con:property><con:property><con:name>dept</con:name><con:value>IT</con:value></con:property></con:properties></con:testCase><con:testCase id="d7105da0-0e5f-45cf-b81f-8313d47b9ec3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetDetails" searchProperties="true"><con:settings/><con:testStep type="request" name="get" id="9ea5d830-ebc6-4948-971c-b80d5e2c4283"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EmployeeManagementServiceSoap12Binding</con:interface><con:operation>getEmployeeDetails</con:operation><con:request name="get" id="4eb4c9b5-39c5-4c22-b55c-9bf25c9303d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://216.10.245.166:8080/axis2/services/EmployeeManagementService.EmployeeManagementServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:typ="http://sample.com/reservation/guest/types">\r
-   <soap:Header/>\r
-   <soap:Body>\r
-      <typ:getEmployeeDetails>\r
-         <!--Optional:-->\r
-         <typ:employeeName></typ:employeeName>\r
-      </typ:getEmployeeDetails>\r
-   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a54c9984-5a04-49c7-bb41-1ef12b1d0bea"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>age</con:name><con:value>30</con:value></con:property><con:property><con:name>name</con:name><con:value>Alexissa123</con:value></con:property><con:property><con:name>id</con:name><con:value>5555555555</con:value></con:property><con:property><con:name>dept</con:name><con:value>IT</con:value></con:property></con:properties></con:testCase><con:testCase id="d7105da0-0e5f-45cf-b81f-8313d47b9ec3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetDetails" searchProperties="true"><con:settings/><con:testStep type="request" name="get" id="9ea5d830-ebc6-4948-971c-b80d5e2c4283"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>EmployeeManagementServiceSoap12Binding</con:interface><con:operation>getEmployeeDetails</con:operation><con:request name="get" id="4eb4c9b5-39c5-4c22-b55c-9bf25c9303d7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://216.10.245.166:8080/axis2/services/EmployeeManagementService.EmployeeManagementServiceHttpSoap12Endpoint/</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:typ="http://sample.com/reservation/guest/types">
+   <soap:Header/>
+   <soap:Body>
+      <typ:getEmployeeDetails>
+         <!--Optional:-->
+         <typ:employeeName>Alexissa123</typ:employeeName>
+      </typ:getEmployeeDetails>
+   </soap:Body>
 </soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="766dd4ab-a80e-4170-afac-b607430d180e"/><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>id</con:name><con:value>500</con:value></con:property></con:properties></con:testCase><con:testCase id="fec340bc-23be-4f5a-9606-3d81b4094c41" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="Script" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Groovy Script" id="31e23ac1-37fa-4d7b-9975-c789ff13a367"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
 import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
 
@@ -352,9 +352,26 @@ addTestStep.run(testRunner, addEmployeeContext)
 // hit getEmployee and generate response. Validate the response if it has the name which we added in ealier
 
 def getReq =  testRunner.testCase.testSuite.testCases["GetDetails"].testSteps["get"].getPropertyValue("Request")
-// def name =  testRunner.testCase.testSuite.testCases["GetDetails"].getPropertyValue("name") - już użyte wcze
+// def name =  testRunner.testCase.testSuite.testCases["GetDetails"].getPropertyValue("name") - już użyte wcześniej, nie trzeba powtarzać
 
 def xmlGet = new XmlHolder(getReq)
 
 xmlGet.setNodeValue ("//typ:getEmployeeDetails/typ:employeeName",name)
-</script></con:config></con:testStep><con:properties><con:property><con:name>age</con:name><con:value>24</con:value></con:property><con:property><con:name>name</con:name><con:value>Tom</con:value></con:property><con:property><con:name>dept</con:name><con:value>IT</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>gender</con:name><con:value>M</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>
+def newGetXml = xmlGet.getXml()
+
+testRunner.testCase.testSuite.testCases["GetDetails"].testSteps["get"].setPropertyValue("Request",newGetXml)
+
+def getTestStep = testRunner.testCase.testSuite.testCases["GetDetails"].testSteps["get"]
+def getEmployeeContext = new WsdlTestRunContext(getTestStep)
+getTestStep.run(testRunner, getEmployeeContext)
+
+// validate response
+
+def getResponse =  testRunner.testCase.testSuite.testCases["GetDetails"].testSteps["get"].getPropertyValue("Response")
+def xmlGetRes = new XmlHolder(getResponse)
+def getResponseAss = xmlGetRes.getNodeValue ("//ns:getEmployeeDetailsResponse/ns:return/ns:name")
+
+log.info getResponseAss
+log.info name
+
+assert getResponseAss==name</script></con:config></con:testStep><con:properties><con:property><con:name>age</con:name><con:value>24</con:value></con:property><con:property><con:name>name</con:name><con:value>Tom</con:value></con:property><con:property><con:name>dept</con:name><con:value>IT</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties><con:property><con:name>gender</con:name><con:value>M</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

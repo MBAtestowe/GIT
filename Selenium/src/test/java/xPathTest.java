@@ -43,5 +43,6 @@ public class xPathTest {
         driver.findElement(By.xpath("//a | //input"));
         driver.findElement(By.xpath("//input[@name='fname' and @id='fname']"));
         driver.findElement(By.xpath("//input[@name='fname' or @id='fname']"));
+
     }
 }

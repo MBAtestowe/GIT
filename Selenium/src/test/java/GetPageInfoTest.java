@@ -8,6 +8,6 @@ public class GetPageInfoTest {
         WebDriver driver = new EdgeDriver();
         driver.get("https://testeroprogramowania.github.io/selenium/basics.html");
         System.out.println(driver.getTitle());
-        System.out.println(driver.getCurrentUrl());
+        System.out.println(driver.getCurrentUrl() );
     }
 }

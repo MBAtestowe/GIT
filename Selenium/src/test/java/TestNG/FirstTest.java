@@ -8,12 +8,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Ignore;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.function.Function;
 
+@Listeners(value = {SampleTestListener.class})
 public class FirstTest extends BaseTest{
     WebDriver driver;
 
@@ -30,13 +32,13 @@ public class FirstTest extends BaseTest{
     }
     @Test
     public void secondTest()  {
-        driver = new EdgeDriver();
+        driver = DriverFactory.getDriver();
         driver.get("https://testeroprogramowania.github.io/selenium/wait2.html");
         driver.findElement(By.id("clickOnMe")).click();
         waitForElementToExist2(By.tagName("p"));
 
         String para = driver.findElement(By.tagName("p")).getText();
-        Assert.assertEquals(para, "Dopiero się pojawiłem!");
+        Assert.assertEquals(para, "Dopiero się!");
         driver.close();
     }
 

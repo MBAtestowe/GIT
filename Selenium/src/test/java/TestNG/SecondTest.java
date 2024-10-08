@@ -8,6 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.time.Duration;
 import java.util.List;
@@ -23,8 +24,13 @@ public class SecondTest extends BaseTest{
         driver.findElement(By.id("clickOnMe")).click();
         waitForElementToExist2(By.tagName("p"));
 
-        String para = driver.findElement(By.tagName("p")).getText();
-        Assert.assertEquals(para, "Dopiero się pojawiłem!");
+        WebElement para = driver.findElement(By.tagName("p"));
+        Assert.assertEquals(para.isDisplayed(),true);
+        Assert.assertTrue(para.isDisplayed(), "Element jest niewidoczny");
+        Assert.assertTrue(para.getText().startsWith("Dopiero"));
+        Assert.assertFalse(para.getText().startsWith("Pojawiłem"));
+        Assert.assertEquals(para.getText(), "Dopiero się pojawiłem!");
+        //Assert.assertEquals(para.getText(), "Dopiero", "Teksty są różne"); //dodajemy wiadomość w przypadku faila
         driver.close();
     }
     @Test
@@ -34,9 +40,20 @@ public class SecondTest extends BaseTest{
         driver.findElement(By.id("clickOnMe")).click();
         waitForElementToExist2(By.tagName("p"));
 
-        String para = driver.findElement(By.tagName("p")).getText();
-        Assert.assertEquals(para, "Dopiero się pojawiłem!");
+        WebElement para = driver.findElement(By.tagName("p"));
+
+        SoftAssert softAsert = new SoftAssert();
+
+        softAsert.assertEquals(para.isDisplayed(),true);
+        softAsert.assertTrue(para.isDisplayed(), "Element jest niewidoczny");
+        softAsert.assertEquals(para.getText(), "Dopiero", "Pierwszy fail");
+        softAsert.assertTrue(para.getText().startsWith("Dopiero"));
+        softAsert.assertFalse(para.getText().startsWith("Pojawiłem"));
+        softAsert.assertEquals(para.getText(), "Dopiero się pojawiłem!");
+        softAsert.assertEquals(para.getText(), "Dopiero się!", "Drugi fail");
+
         driver.close();
+        softAsert.assertAll();
     }
     
     public void waitForElementToExist2(By locator) {

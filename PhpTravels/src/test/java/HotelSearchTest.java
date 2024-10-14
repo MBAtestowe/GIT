@@ -1,23 +1,15 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-public class HotelSearch {
+public class HotelSearchTest extends BaseTest{
 
     @Test
-    public void searchHotel(){
-        WebDriver driver = new EdgeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
-        driver.get("http://www.kurs-selenium.pl/demo/");
+    public void searchHotelTest(){
         driver.findElement(By.xpath("//span[text()='Search by Hotel or City Name']")).click();
         driver.findElement(By.xpath("//div[@id='select2-drop']//input")).sendKeys("Dubai");
         driver.findElement(By.xpath("//span[@class='select2-match' and text()='Dubai']")).click();
@@ -35,7 +27,7 @@ public class HotelSearch {
         driver.findElement(By.xpath("//button[text()=' Search']")).click();
 
         List<String> hotelsName = driver.findElements(By.xpath("//h4[contains(@class, 'list_title')]//b")).
-                stream().map(el -> el.getAttribute("textContent")).collect(Collectors.toList());
+                stream().map(WebElement::getText).collect(Collectors.toList());
 
         //System.out.println(hotelsName.size());
         //hotelsName.forEach(el -> System.out.println(el));
@@ -45,13 +37,9 @@ public class HotelSearch {
         Assert.assertEquals(hotelsName.get(1),"Oasis Beach Tower");
         Assert.assertEquals(hotelsName.get(2),"Rose Rayhaan Rotana");
         Assert.assertEquals(hotelsName.get(3),"Hyatt Regency Perth");
-    }
+            }
     @Test
-    public void searchHotelNoResultFind(){
-        WebDriver driver = new EdgeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
-        driver.get("http://www.kurs-selenium.pl/demo/");
+    public void searchHotelNoResultFindTest(){
         driver.findElement(By.name("checkin")).sendKeys("10/10/2024");
         driver.findElement(By.name("checkout")).click();
         driver.findElements(By.xpath("//td[@class='day ' and text()='20']"))
@@ -67,8 +55,5 @@ public class HotelSearch {
 
         Assert.assertTrue(heading.isDisplayed());
         Assert.assertEquals(heading.getText(), "No Results Found");
-        driver.quit();
-
-
-    }
+         }
 }

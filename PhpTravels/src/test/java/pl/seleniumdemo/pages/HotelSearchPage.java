@@ -38,31 +38,36 @@ public class HotelSearchPage {
         this.driver= driver;
     }
 
-    public void setCity(String cityName){
+    public HotelSearchPage setCity(String cityName){
         HotelSearchSpan.click();
         HotelSearchInput.sendKeys(cityName);
         String xpath = String.format("//span[@class='select2-match' and text()='%s']",cityName);
         driver.findElement(By.xpath(xpath)).click();
+        return this;
     }
-    public void setDates (String checkin, String checkout){
+    public HotelSearchPage setDates (String checkin, String checkout){
         CheckInInput.sendKeys(checkin);
         CheckOutInput.sendKeys(checkout);
+        return this;
     }
-    public void setTravelers(int adultsToAdd, int childToAdd){
+    public HotelSearchPage setTravelers(int adultsToAdd, int childToAdd){
         travelersInput.click();
         addTraveler(adultPlsBtn,adultsToAdd);
         addTraveler(childPlsBtn,childToAdd);
+        return this;
     }
     private void addTraveler(WebElement travelerBtn,int numberOfTravelers){
         for(int i=0; i<numberOfTravelers; i++){
             travelerBtn.click();
         }
     }
-    public void performSearch(){
+    public ResultsPage performSearch(){
         searchButton.click();
+        return new ResultsPage(driver);
     }
-    public void signUpForm(){
+    public SignUpPage signUpForm(){
         myAccountButton.stream().filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
         signUpButton.get(1).click();
+        return new SignUpPage(driver);
     }
 }

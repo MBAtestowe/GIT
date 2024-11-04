@@ -14,7 +14,6 @@ public class BaseTest {
     public void setup() {
         driver = new EdgeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
         driver.get("http://www.kurs-selenium.pl/demo/");
     }
 

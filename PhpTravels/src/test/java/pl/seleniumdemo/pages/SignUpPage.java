@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import pl.seleniumdemo.model.User;
+import pl.seleniumdemo.utils.SeleniumHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -73,10 +74,12 @@ public class SignUpPage {
     }
 
     public List<String> errorsText() {
-        return errors.stream().map(el -> el.getAttribute("textContent")).collect(Collectors.toList());
+        SeleniumHelper.waitForNotEmptyList(driver, By.xpath("//div[@class='alert alert-danger']//p"));
+                return errors.stream().map(el -> el.getAttribute("textContent")).collect(Collectors.toList());
     }
 
     public String emailAlreadyExists() {
+        SeleniumHelper.waitForNotEmptyList(driver, By.xpath("//div[@class='alert alert-danger']"));
         return emailAlreadyExistsError.getText();
     }
 

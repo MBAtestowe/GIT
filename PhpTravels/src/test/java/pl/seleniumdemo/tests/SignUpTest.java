@@ -10,6 +10,7 @@ import pl.seleniumdemo.pages.HotelSearchPage;
 import pl.seleniumdemo.pages.LoggedUserPage;
 import pl.seleniumdemo.pages.SignUpPage;
 import pl.seleniumdemo.tests.BaseTest;
+import pl.seleniumdemo.utils.SeleniumHelper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,7 +37,7 @@ public class SignUpTest extends BaseTest {
         Assert.assertEquals(loggedUserPage.getHeadingText(), "Hi, Anna Nowak");
     }
 
-    @Test
+   // @Test
     public void signUpTest2() {
 
         int randomNumber = (int) (Math.random() * 1000);

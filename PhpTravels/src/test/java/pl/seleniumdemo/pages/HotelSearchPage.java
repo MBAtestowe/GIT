@@ -33,39 +33,45 @@ public class HotelSearchPage {
     private List<WebElement> signUpButton;
 
     private WebDriver driver;
-    public HotelSearchPage(WebDriver driver){
+
+    public HotelSearchPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver= driver;
+        this.driver = driver;
     }
 
-    public HotelSearchPage setCity(String cityName){
+    public HotelSearchPage setCity(String cityName) {
         HotelSearchSpan.click();
         HotelSearchInput.sendKeys(cityName);
-        String xpath = String.format("//span[@class='select2-match' and text()='%s']",cityName);
+        String xpath = String.format("//span[@class='select2-match' and text()='%s']", cityName);
         driver.findElement(By.xpath(xpath)).click();
         return this;
     }
-    public HotelSearchPage setDates (String checkin, String checkout){
+
+    public HotelSearchPage setDates(String checkin, String checkout) {
         CheckInInput.sendKeys(checkin);
         CheckOutInput.sendKeys(checkout);
         return this;
     }
-    public HotelSearchPage setTravelers(int adultsToAdd, int childToAdd){
+
+    public HotelSearchPage setTravelers(int adultsToAdd, int childToAdd) {
         travelersInput.click();
-        addTraveler(adultPlsBtn,adultsToAdd);
-        addTraveler(childPlsBtn,childToAdd);
+        addTraveler(adultPlsBtn, adultsToAdd);
+        addTraveler(childPlsBtn, childToAdd);
         return this;
     }
-    private void addTraveler(WebElement travelerBtn,int numberOfTravelers){
-        for(int i=0; i<numberOfTravelers; i++){
+
+    private void addTraveler(WebElement travelerBtn, int numberOfTravelers) {
+        for (int i = 0; i < numberOfTravelers; i++) {
             travelerBtn.click();
         }
     }
-    public ResultsPage performSearch(){
+
+    public ResultsPage performSearch() {
         searchButton.click();
         return new ResultsPage(driver);
     }
-    public SignUpPage signUpForm(){
+
+    public SignUpPage signUpForm() {
         myAccountButton.stream().filter(WebElement::isDisplayed).findFirst().ifPresent(WebElement::click);
         signUpButton.get(1).click();
         return new SignUpPage(driver);

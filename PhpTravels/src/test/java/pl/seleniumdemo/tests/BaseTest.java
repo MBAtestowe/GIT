@@ -11,14 +11,15 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setup(){
+    public void setup() {
         driver = new EdgeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1000));
         driver.get("http://www.kurs-selenium.pl/demo/");
     }
+
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }

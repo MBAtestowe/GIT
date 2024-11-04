@@ -12,56 +12,75 @@ import java.util.stream.Collectors;
 
 public class SignUpPage {
 
-    @FindBy (name= "firstname")
+    @FindBy(name = "firstname")
     private WebElement firstNameInput;
-    @FindBy (name= "lastname")
+    @FindBy(name = "lastname")
     private WebElement lastNameInput;
-    @FindBy (name= "phone")
+    @FindBy(name = "phone")
     private WebElement phoneInput;
-    @FindBy (name= "email")
+    @FindBy(name = "email")
     private WebElement emailInput;
-    @FindBy (name= "password")
+    @FindBy(name = "password")
     private WebElement passwordInput;
-    @FindBy (name= "confirmpassword")
+    @FindBy(name = "confirmpassword")
     private WebElement confirmPasswordInput;
-    @FindBy (xpath= "//button[text()=' Sign Up']")
+    @FindBy(xpath = "//button[text()=' Sign Up']")
     private WebElement signUpButton;
-    @FindBy  (xpath = "//div[@class='alert alert-danger']//p")
+    @FindBy(xpath = "//div[@class='alert alert-danger']//p")
     private List<WebElement> errors;
-    @FindBy  (xpath = "//div[@class='alert alert-danger']")
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
     private WebElement emailAlreadyExistsError;
+    private WebDriver driver;
 
-    public SignUpPage(WebDriver driver){
-        PageFactory.initElements(driver,this);
+    public SignUpPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        this.driver = driver;
     }
-    public void setFirstName(String firstName){
+
+    public SignUpPage setFirstName(String firstName) {
         firstNameInput.sendKeys(firstName);
+        return this;
     }
-    public void setLastName(String lastName){
+
+    public SignUpPage setLastName(String lastName) {
         lastNameInput.sendKeys(lastName);
+        return this;
     }
-    public void setPhoneName(String phone){
+
+    public SignUpPage setPhoneName(String phone) {
         phoneInput.sendKeys(phone);
+        return this;
     }
-    public void setEmailName(String email){
+
+    public SignUpPage setEmailName(String email) {
         emailInput.sendKeys(email);
+        return this;
     }
-    public void setPasswordName(String password){
+
+    public SignUpPage setPasswordName(String password) {
         passwordInput.sendKeys(password);
+        return this;
     }
-    public void confirmPasswordName(String confirmPassword){
+
+    public SignUpPage confirmPasswordName(String confirmPassword) {
         confirmPasswordInput.sendKeys(confirmPassword);
+        return this;
     }
-    public void signUp(){
+
+    public LoggedUserPage signUp() {
         signUpButton.click();
+        return new LoggedUserPage(driver);
     }
-    public List <String> errorsText (){
-        return errors.stream().map(el-> el.getAttribute("textContent")).collect(Collectors.toList());
+
+    public List<String> errorsText() {
+        return errors.stream().map(el -> el.getAttribute("textContent")).collect(Collectors.toList());
     }
-    public String emailAlreadyExists(){
-       return emailAlreadyExistsError.getText();
+
+    public String emailAlreadyExists() {
+        return emailAlreadyExistsError.getText();
     }
-    public void fillSignUpForm(String firstName, String lastName, String phone, String email, String password){
+
+    public void fillSignUpForm(String firstName, String lastName, String phone, String email, String password) {
         firstNameInput.sendKeys(firstName);
         lastNameInput.sendKeys(lastName);
         phoneInput.sendKeys(phone);
@@ -70,7 +89,8 @@ public class SignUpPage {
         confirmPasswordInput.sendKeys(password);
         signUpButton.click();
     }
-    public void fillSignUpForm(User user){
+
+    public void fillSignUpForm(User user) {
         firstNameInput.sendKeys(user.getFirstName());
         lastNameInput.sendKeys(user.getLastName());
         phoneInput.sendKeys(user.getPhone());

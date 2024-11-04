@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.Factory;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,13 +14,15 @@ public class ResultsPage {
     @FindBy(xpath = "//div[@class='itemscontainer']//h2")
     public WebElement resultsHeading;
 
-    public ResultsPage(WebDriver driver){
-        PageFactory.initElements(driver,this);
+    public ResultsPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
     }
-    public List<String> getHotelsName(){
-    return    hotelLists.stream().map(WebElement::getText).collect(Collectors.toList());
+
+    public List<String> getHotelsName() {
+        return hotelLists.stream().map(WebElement::getText).collect(Collectors.toList());
     }
-    public String getHeadingTitle(){
+
+    public String getHeadingTitle() {
         return resultsHeading.getText();
     }
 }

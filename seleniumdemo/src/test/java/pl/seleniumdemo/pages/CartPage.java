@@ -13,9 +13,9 @@ public class CartPage {
         PageFactory.initElements(driver, this);
         this.driver = driver;
     }
-    public AddressDetails openAddressDetails (){
+    public AddressDetailsPage openAddressDetails (){
         proceededToCheckoutButton.click();
-        return new AddressDetails (driver);
+        return new AddressDetailsPage(driver);
 
     }
 }

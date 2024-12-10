@@ -14,7 +14,7 @@ public class BaseTest {
     public void setup() {
         driver = new EdgeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.get("http://www.seleniumdemo.com");
     }
 
